@@ -29,14 +29,14 @@ Node * createNode(const void * data) {
 }
 
 List * createList() {
-  List* lista = (List*) malloc(sizeof(List));
-  lista->head=NULL;
-  lista->tail=NULL;
-     return lista;
+  List* list = (List*) malloc(sizeof(List));
+  list->head=NULL;
+  list->tail=NULL;
+     return list;
 }
 
 void * firstList(List * list) {
-    return NULL;
+    return list->head;
 }
 
 void * nextList(List * list) {
