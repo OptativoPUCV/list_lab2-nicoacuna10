@@ -6,7 +6,7 @@
 typedef struct Node Node;
 
 struct Node {
-    /*const*/ void * data;
+    const void * data;
     Node * next;
     Node * prev;
 };
@@ -19,7 +19,7 @@ struct List {
 
 typedef List List;
 
-Node * createNode(/*const*/ void * data) {
+Node * createNode(const void * data) {
     Node * new = (Node *)malloc(sizeof(Node));
     assert(new != NULL);
     new->data = data;
@@ -37,50 +37,61 @@ List * createList() {
 }
 
 void * firstList(List * list) {
-    if (list == NULL){
+    /*if (list == NULL){
       return NULL;
     }
     if (list->head == NULL){
       return NULL;
     }
     list->current = list->head;
-    return list->current->data;
+    return list->current->data;*/
+    return NULL;
 }
 
 void * nextList(List * list) {
-    if (list == NULL){
+    /*if (list == NULL){
       return NULL;
     }
     if (list->current->next == NULL){
       return NULL;
     }
     list->current = list->current->next;
-    return list->current->data;
+    return list->current->data;*/
+    return NULL;
 }
 
 void * lastList(List * list) {
-    if (list == NULL){
+    /*if (list == NULL){
       return NULL;
     }
     if (list->tail == NULL){
       return NULL;
     }
     list->current = list->tail;
-    return list->current->data;
+    return list->current->data;*/
+    return NULL;
 }
 
 void * prevList(List * list) {
-    if (list == NULL){
+    /*if (list == NULL){
       return NULL;
     }
     if (list->current->prev == NULL){
       return NULL;
     }
     list->current = list->current->prev;
-    return list->current->data;
+    return list->current->data;*/
+    return NULL;
 }
 
 void pushFront(List * list, const void * data) {
+  Node* NodoNuevo = createNode(data);
+  NodoNuevo->next = list->head;
+  if (list->head != NULL){
+    list->head->prev = NodoNuevo;
+  }
+  list->head = NodoNuevo;
+  NodoNuevo->prev = NULL;
 }
 
 void pushBack(List * list, const void * data) {

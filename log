@@ -69,3 +69,9 @@ Mon Mar 22 01:08:32 UTC 2021:
  1 file changed, 10 insertions(+), 14 deletions(-)
  tests:  0|0
 3dbea9a
+Mon Mar 22 14:23:25 UTC 2021: 
+ list.c | 31 +++++++++++++++++++++----------
+ 1 file changed, 21 insertions(+), 10 deletions(-)
+ tests:  1|5
+total_score: 10/70
+c9fba28
