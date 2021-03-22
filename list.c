@@ -6,7 +6,7 @@
 typedef struct Node Node;
 
 struct Node {
-    const void * data;
+    void * data;
     Node * next;
     Node * prev;
 };
@@ -19,7 +19,7 @@ struct List {
 
 typedef List List;
 
-Node * createNode(const void * data) {
+Node * createNode(void * data) {
     Node * new = (Node *)malloc(sizeof(Node));
     assert(new != NULL);
     new->data = data;
@@ -37,76 +37,67 @@ List * createList() {
 }
 
 void * firstList(List * list) {
-    /*if (list == NULL){
+    if (list == NULL){
       return NULL;
     }
     if (list->head == NULL){
       return NULL;
     }
     list->current = list->head;
-    return list->current->data;*/
-    return NULL;
+    return list->current->data;
 }
 
 void * nextList(List * list) {
-    /*if (list == NULL){
+    if (list == NULL){
       return NULL;
     }
     if (list->current->next == NULL){
       return NULL;
     }
     list->current = list->current->next;
-    return list->current->data;*/
-    return NULL;
+    return list->current->data;
 }
 
 void * lastList(List * list) {
-    /*if (list == NULL){
+    if (list == NULL){
       return NULL;
     }
     if (list->tail == NULL){
       return NULL;
     }
     list->current = list->tail;
-    return list->current->data;*/
-    return NULL;
+    return list->current->data;
 }
 
 void * prevList(List * list) {
-    /*if (list == NULL){
+    if (list == NULL){
       return NULL;
     }
     if (list->current->prev == NULL){
       return NULL;
     }
     list->current = list->current->prev;
-    return list->current->data;*/
-    return NULL;
+    return list->current->data;
+    
 }
 
-void pushFront(List * list, const void * data) {
+void pushFront(List * list, void * data) {
   Node* NodoNuevo = createNode(data);
   NodoNuevo->next = list->head;
-  if (list->head != NULL){
-    list->head->prev = NodoNuevo;
-  }
   list->head = NodoNuevo;
   NodoNuevo->prev = NULL;
 }
 
-void pushBack(List * list, const void * data) {
+void pushBack(List * list, void * data) {
     list->current = list->tail;
     pushCurrent(list,data);
 }
 
-void pushCurrent(List * list, const void * data) {
+void pushCurrent(List * list, void * data) {
     Node* NodoNuevo = createNode(data);
     NodoNuevo->prev = list->current;
-    if (list->current != NULL){
-      list->current->next = NodoNuevo;
-    }
+    NodoNuevo->next = list->current->next;
     list->current = NodoNuevo;
-    NodoNuevo->next = NULL;
 }
 
 void * popFront(List * list) {
@@ -120,7 +111,14 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-    return NULL;
+    if (list == NULL){
+        return NULL;
+    }
+    if (list->current->prev != NULL){
+        
+    }
+    list->current = list->current->next;
+    return list->current->data;
 }
 
 void cleanList(List * list) {
