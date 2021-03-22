@@ -6,7 +6,7 @@
 typedef struct Node Node;
 
 struct Node {
-    /*const*/ void * data;
+    const void * data;
     Node * next;
     Node * prev;
 };
@@ -19,7 +19,7 @@ struct List {
 
 typedef List List;
 
-Node * createNode(/*const*/ void * data) {
+Node * createNode(const void * data) {
     Node * new = (Node *)malloc(sizeof(Node));
     assert(new != NULL);
     new->data = data;
@@ -44,18 +44,18 @@ void * firstList(List * list) {
       return NULL;
     }
     list->current = list->head;
-    return list->current->data;
+    return list->current;
 }
 
 void * nextList(List * list) {
     if (list == NULL){
       return NULL;
     }
-    /*if (list->current->next == NULL){
+    if (list->current->next == NULL){
       return NULL;
-    }*/
+    }
     list->current = list->current->next;
-    return list->current->data;
+    return list->current;
 }
 
 void * lastList(List * list) {
@@ -66,7 +66,7 @@ void * lastList(List * list) {
       return NULL;
     }
     list->current = list->tail;
-    return list->current->data;
+    return list->current;
 }
 
 void * prevList(List * list) {
@@ -77,18 +77,18 @@ void * prevList(List * list) {
       return NULL;
     }
     list->current = list->current->prev;
-    return list->current->data;
+    return list->current;
 }
 
-void pushFront(List * list, /*const*/ void * data) {
+void pushFront(List * list, const void * data) {
 }
 
-void pushBack(List * list, /*const*/ void * data) {
+void pushBack(List * list, const void * data) {
     list->current = list->tail;
     pushCurrent(list,data);
 }
 
-void pushCurrent(List * list, /*const*/ void * data) {
+void pushCurrent(List * list, const void * data) {
 }
 
 void * popFront(List * list) {
