@@ -81,3 +81,9 @@ Mon Mar 22 14:31:11 UTC 2021:
  tests:  1|5
 total_score: 10/70
 94cebe7
+Mon Mar 22 14:38:39 UTC 2021: 
+ list.c | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+ tests:  1|5
+total_score: 10/70
+295ee32
