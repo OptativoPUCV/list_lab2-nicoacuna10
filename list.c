@@ -37,47 +37,51 @@ List * createList() {
 }
 
 void * firstList(List * list) {
-    if (list == NULL){
+    /*if (list == NULL){
       return NULL;
     }
     if (list->head == NULL){
       return NULL;
     }
     list->current = list->head;
-    return list->current;
+    return list->current->data;*/
+    return NULL;
 }
 
 void * nextList(List * list) {
-    if (list == NULL){
+    /*if (list == NULL){
       return NULL;
     }
     if (list->current->next == NULL){
       return NULL;
     }
     list->current = list->current->next;
-    return list->current;
+    return list->current->data;*/
+    return NULL;
 }
 
 void * lastList(List * list) {
-    if (list == NULL){
+    /*if (list == NULL){
       return NULL;
     }
     if (list->tail == NULL){
       return NULL;
     }
     list->current = list->tail;
-    return list->current;
+    return list->current->data;*/
+    return NULL;
 }
 
 void * prevList(List * list) {
-    if (list == NULL){
+    /*if (list == NULL){
       return NULL;
     }
     if (list->current->prev == NULL){
       return NULL;
     }
     list->current = list->current->prev;
-    return list->current;
+    return list->current->data;*/
+    return NULL;
 }
 
 void pushFront(List * list, const void * data) {
