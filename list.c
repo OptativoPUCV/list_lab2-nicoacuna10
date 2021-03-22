@@ -32,6 +32,7 @@ List * createList() {
     List* list = (List*) malloc(sizeof(List));
     list->head=NULL;
     list->tail=NULL;
+    list->current=NULL;
     return list;
 }
 
@@ -43,7 +44,7 @@ void * firstList(List * list) {
       return NULL;
     }
     list->current = list->head;
-    return (list->current->data);
+    return list->current->data;
 }
 
 void * nextList(List * list) {
@@ -54,7 +55,7 @@ void * nextList(List * list) {
       return NULL;
     }
     list->current = list->current->next;
-    return (list->current->data);
+    return list->current->data;
 }
 
 void * lastList(List * list) {
@@ -65,7 +66,7 @@ void * lastList(List * list) {
       return NULL;
     }
     list->current = list->tail;
-    return (list->current->data);
+    return list->current->data;
 }
 
 void * prevList(List * list) {
@@ -76,18 +77,18 @@ void * prevList(List * list) {
       return NULL;
     }
     list->current = list->current->prev;
-    return (list->current->data);
+    return list->current->data;
 }
 
-void pushFront(List * list, const void * data) {
+void pushFront(List * list, /*const*/ void * data) {
 }
 
-void pushBack(List * list, const void * data) {
+void pushBack(List * list, /*const*/ void * data) {
     list->current = list->tail;
     pushCurrent(list,data);
 }
 
-void pushCurrent(List * list, const void * data) {
+void pushCurrent(List * list, /*const*/ void * data) {
 }
 
 void * popFront(List * list) {
