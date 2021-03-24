@@ -6,7 +6,7 @@
 typedef struct Node Node;
 
 struct Node {
-    void * data;
+    const void * data;
     Node * next;
     Node * prev;
 };
@@ -19,7 +19,7 @@ struct List {
 
 typedef List List;
 
-Node * createNode(void * data) {
+Node * createNode(const void * data) {
     Node * new = (Node *)malloc(sizeof(Node));
     assert(new != NULL);
     new->data = data;
@@ -44,7 +44,7 @@ void * firstList(List * list) {
       return NULL;
     }
     list->current = list->head;
-    return list->current->data;
+    return (void *)list->current->data;
 }
 
 void * nextList(List * list) {
@@ -55,7 +55,7 @@ void * nextList(List * list) {
       return NULL;
     }
     list->current = list->current->next;
-    return list->current->data;
+    return (void *)list->current->data;
 }
 
 void * lastList(List * list) {
@@ -66,7 +66,7 @@ void * lastList(List * list) {
       return NULL;
     }
     list->current = list->tail;
-    return list->current->data;
+    return (void *)list->current->data;
 }
 
 void * prevList(List * list) {
@@ -77,10 +77,10 @@ void * prevList(List * list) {
       return NULL;
     }
     list->current = list->current->prev;
-    return list->current->data;
+    return (void *)list->current->data;
 }
 
-void pushFront(List * list, void * data) {
+void pushFront(List * list, const void * data) {
     Node* NodoNuevo = createNode(data);
     if (list->head == NULL){
       list->head = NodoNuevo;
@@ -93,12 +93,12 @@ void pushFront(List * list, void * data) {
     }
 }
 
-void pushBack(List * list, void * data) {
+void pushBack(List * list, void const* data) {
     list->current = list->tail;
     pushCurrent(list,data);
 }
 
-void pushCurrent(List * list, void * data) {
+void pushCurrent(List * list, const void * data) {
     Node* NodoNuevo = createNode(data);
     if (list->current->next == NULL){
       NodoNuevo->prev = list->current;
@@ -123,14 +123,20 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-    if (list == NULL){
-        return NULL;
+    /*Node* eliminado = (Node*)malloc(sizeof(Node));
+    if (list->current->prev == NULL){
+      eliminado = list->current;
+      list->head = list->current->next;
+      list->head->prev = NULL;
+      return eliminado->data;
     }
-    if (list->current->prev != NULL){
-        
-    }
-    list->current = list->current->next;
-    return list->current->data;
+    if (list->current->next == NULL){
+      eliminado = list->current;
+      list->tail = list->current->prev;
+      list->tail->next = NULL;
+      return eliminado->data;
+    }*/
+    return NULL;
 }
 
 void cleanList(List * list) {
