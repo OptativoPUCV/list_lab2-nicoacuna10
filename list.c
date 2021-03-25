@@ -123,19 +123,20 @@ void * popBack(List * list) {
 }
 
 void * popCurrent(List * list) {
-    /*Node* eliminado = (Node*)malloc(sizeof(Node));
+    Node* eliminado = (Node*)malloc(sizeof(Node));
     if (list->current->prev == NULL){
       eliminado = list->current;
       list->head = list->current->next;
       list->head->prev = NULL;
-      return eliminado->data;
+      return (void*) eliminado->data;
     }
     if (list->current->next == NULL){
       eliminado = list->current;
       list->tail = list->current->prev;
       list->tail->next = NULL;
-      return eliminado->data;
-    }*/
+      return (void*) eliminado->data;
+    }
+    
     return NULL;
 }
 
