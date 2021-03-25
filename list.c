@@ -128,16 +128,17 @@ void * popCurrent(List * list) {
       eliminado = list->current;
       list->head = list->current->next;
       list->head->prev = NULL;
-      return (void*) eliminado->data;
+      return (void *)eliminado->data;
     }
     if (list->current->next == NULL){
       eliminado = list->current;
       list->tail = list->current->prev;
       list->tail->next = NULL;
-      return (void*) eliminado->data;
+      return (void *)eliminado->data;
     }
-    
-    return NULL;
+
+    //faltaba esto también
+    return NULL;    
 }
 
 void cleanList(List * list) {
