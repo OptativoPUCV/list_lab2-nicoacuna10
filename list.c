@@ -126,8 +126,8 @@ void * popCurrent(List * list) {
     Node* eliminado = (Node*)malloc(sizeof(Node));
     if (list->current->prev == NULL){
       eliminado = list->current;
-      list->current = list->current->next;
-      list->current->prev = NULL;
+      list->head = list->current->next;
+      list->head->prev = NULL;
       return (void *)eliminado->data;
     }
     if (list->current->next == NULL){
