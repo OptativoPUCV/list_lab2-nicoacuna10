@@ -143,7 +143,7 @@ void * popCurrent(List * list) {
       return (void *)eliminado->data;
     }
     //faltaba esto también
-    return NULL;    
+    //return NULL;    
 }
 
 void cleanList(List * list) {
