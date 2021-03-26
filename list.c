@@ -100,6 +100,10 @@ void pushBack(List * list, const void * data) {
 
 void pushCurrent(List * list, const void * data) {
     Node* NodoNuevo = createNode(data);
+    if(NodoNuevo == NULL){
+      printf("No hay memoria\n");
+      exit (1);
+    }
     NodoNuevo->prev = list->current;
     if (list->current->next == NULL){
       list->current->next = NodoNuevo;
