@@ -140,7 +140,6 @@ void * popCurrent(List * list) {
       list->current->prev = eliminado->prev;
       eliminado->next = NULL;
       eliminado->prev = NULL;
-      list->current = list->current->next;
       return (void *)eliminado->data;
     }
     //faltaba esto también
