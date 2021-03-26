@@ -104,12 +104,13 @@ void pushCurrent(List * list, const void * data) {
       printf("No hay memoria\n");
       exit (1);
     }
-    list->current->next = NodoNuevo;
     if (list->current->next == NULL){
+      list->current->next = NodoNuevo;
       NodoNuevo->prev = list->current;
       list->current = NodoNuevo;
       list->tail = list->current;
     }else{
+      list->current->next = NodoNuevo;
       NodoNuevo->prev = list->current;
       list->current = NodoNuevo;
     }
