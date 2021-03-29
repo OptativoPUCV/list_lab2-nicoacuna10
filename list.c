@@ -128,26 +128,31 @@ void * popBack(List * list) {
 
 void * popCurrent(List * list) {
     Node* eliminado = (Node*)malloc(sizeof(Node));
+    const void* datoEliminado = (const void*) malloc(sizeof(const void));
     eliminado = list->current;
+    datoEliminado = eliminado->data;
     // Eliminar el primer nodo.
     if (list->current->prev == NULL){
       list->head = list->current->next;
       list->head->prev = NULL;
       list->current = list->head;
-      return (void *)eliminado->data;
+      free(eliminado);
+      return (void *)datoEliminado;
     }
     // Eliminar el último nodo.
     if (list->current->next == NULL){
       list->tail = list->current->prev;
       list->tail->next = NULL;
       list->current = list->tail;
-      return (void *)eliminado->data;
+      free(eliminado);
+      return (void *)datoEliminado;
     }
     // Eliminar el nodo en la posición del current.
     else{
       list->current->next->prev = list->current->prev;
       list->current->prev->next = list->current->next;
-      return (void *)eliminado->data;
+      free(eliminado);
+      return (void *)datoEliminado;
     }   
 }
 
