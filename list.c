@@ -128,9 +128,9 @@ void * popBack(List * list) {
 
 void * popCurrent(List * list) {
     Node* eliminado = (Node*)malloc(sizeof(Node));
-    const void* datoEliminado;
+    int long datoEliminado;
     eliminado = list->current;
-    datoEliminado = eliminado->data;
+    datoEliminado = (int long)eliminado->data;
     // Eliminar el primer nodo.
     if (list->current->prev == NULL){
       list->head = list->current->next;
